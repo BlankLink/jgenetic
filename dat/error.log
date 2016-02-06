@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-02-05T11:48:00</date>
+  <millis>1454698080227</millis>
+  <sequence>0</sequence>
+  <logger>gene.ErrorLog</logger>
+  <level>INFO</level>
+  <class>gene.ErrorLog</class>
+  <method>write</method>
+  <thread>1</thread>
+  <message>hello world</message>
+</record>
+</log>
