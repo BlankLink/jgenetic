@@ -1,0 +1,44 @@
+Albuquerque
+5 2
+Boston
+16 3
+Chicago
+13 5
+Detroit
+15 9
+Edinburgh
+10 10
+Fargo
+4 9
+Gettysburg
+6 12
+Helena
+12 13
+Indianapolis
+9 14
+Jacksonville
+16 20
+Kansas_City
+18 18
+Lincoln
+2 5
+Minneapolis
+7 5
+Newark
+2 16
+Olympia
+11 18
+Philadelphia
+8 18
+Queens
+5 11
+Raleigh
+16 1
+Salem
+12 4
+Tallahassee
+3 11
+Umpqua
+7 14
+Virginia_Beach
+1 1
