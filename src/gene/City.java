@@ -1,13 +1,16 @@
 package gene;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 public class City {
     public String name;
-    public Coordinate coordinate;
+    public int x;
+    public int y;
 
     public City( String name, int x, int y ) {
 	this.name = name;
-	coordinate.x = x;
-	coordinate.y = y;
-	ErrorLog.write("stuff");
+	this.x = x;
+	this.y = y;
     }
 }
