@@ -5,13 +5,13 @@ import java.util.logging.Level;
 
 public class Main {
 
-    public static void logSetup() {
+    public static void setup() {
+	//setup log
 	Logger.getLogger(Logger.class.getName()).log(Level.INFO, "log initialized");
+       	CityMap.getCityMap().print("dat/citymap.txt");
     }
 
     public static void main(String args[]){
-	logSetup();
-	CityMap m = new CityMap("dat/cities.dat");
-	m.print("dat/citymap.txt");
+	setup();
     }
 }
