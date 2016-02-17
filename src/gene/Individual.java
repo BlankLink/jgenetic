@@ -4,10 +4,16 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Individual {
-
     private City[] cities;
     private double fitness;
 
+    public Individual( ) {
+	this.cities = new City[Constants.nCity];
+	for( int i = 0; i < Constants.nCity; i++ )
+	    cities[i] = CityMap.getCityMap().getRandomCity();
+    }
+    
+    //constructor
     public Individual( City[] cities ) {
 	this.cities = new City[Constants.nCity];
 	for(int i=0; i < Constants.nCity; i++)
@@ -40,6 +46,14 @@ public class Individual {
     private double distance( City a, City b ) {
 	return Math.sqrt( Math.pow( a.x - b.x , 2)
 			  + Math.pow( a.y - b.y , 2 ) );
+    }
+
+    @Override
+    public String toString() {
+	StringBuilder result = new StringBuilder();
+	for( int i = 0; i < Constants.nCity; i++ )
+	    result.append( cities[i].name + "\n");
+	return result.toString();
     }
 	   
 }

@@ -14,5 +14,7 @@ public class Main {
 
     public static void main(String args[]){
 	setup();
+	Individual i = new Individual();
+	System.out.print( i );
     }
 }

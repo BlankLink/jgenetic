@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.Random;
 
 public final class CityMap {
     static private City []cities;
@@ -28,6 +29,13 @@ public final class CityMap {
 	    Logger.getLogger(Logger.class.getName()).log(Level.WARNING,
 							 "there was a problem: " + e.getMessage());
 	}
+    }
+    
+    public static City getRandomCity(){
+	Random rand = new Random();
+	int index = rand.nextInt(Constants.nCity);
+	
+	return cities[index];
     }
 
     public static CityMap getCityMap(){
