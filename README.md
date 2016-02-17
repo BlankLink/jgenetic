@@ -1,0 +1,3 @@
+This is a genetic algorithm designed to solve the travelling salesman problem.
+
+Each individual will have a list of 22 cities. The object is to have a complete tour of these citiesin the shortest amount of distance. A complete tour will have visted each one of the cities, and returned home. Individuals should generate larger fitness scores than those who don't have complete tours but have very low distance travelled.
