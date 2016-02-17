@@ -8,6 +8,7 @@ public class Main {
     public static void setup() {
 	//setup log
 	Logger.getLogger(Logger.class.getName()).log(Level.INFO, "log initialized");
+	//setup singleton
        	CityMap.getCityMap().print("dat/citymap.txt");
     }
 
