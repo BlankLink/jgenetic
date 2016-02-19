@@ -2,18 +2,53 @@ package gene;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Random;
 
 public class Individual {
-    private City[] cities;
+    public City[] cities;
     private double fitness;
 
+    //random cconstructor
     public Individual( ) {
 	this.cities = new City[Constants.nCity];
 	for( int i = 0; i < Constants.nCity; i++ )
 	    cities[i] = CityMap.getCityMap().getRandomCity();
+	genFitness();
     }
     
-    //constructor
+    //a sexual mutation constructor
+    public Individual( Individual a ) {
+	cities = new City[Constants.nCity];
+	Random rand = new Random();
+	for( int i = 0; i < Constants.nCity; i++ )
+	    cities[i] = a.cities[i];
+	int cityA = rand.nextInt(Constants.nCity);
+	int cityB = rand.nextInt(Constants.nCity);
+	while( cityA == cityB )
+	    cityB = rand.nextInt(Constants.nCity);
+	City temp = cities[cityA];
+	cities[cityA] = cities[cityB];
+	cities[cityB] = temp;
+	genFitness();
+    }
+
+    //bi sexual constructor
+    public Individual( Individual a, Individual b ) {
+	Random rand = new Random();
+	this.cities = new City[Constants.nCity];
+	int pointA = rand.nextInt(Constants.nCity);
+	int pointB = pointA + rand.nextInt(Constants.nCity-pointA);
+
+	for( int i = 0; i < pointA; i++)
+	    cities[i] = a.cities[i];
+	for( int i = pointA; i < pointB; i++)
+	    cities[i] = b.cities[i];
+	for( int i = pointB; i < Constants.nCity; i++)
+	    cities[i] = a.cities[i];
+	genFitness();
+    }
+    
+    //copy constructor
     public Individual( City[] cities ) {
 	this.cities = new City[Constants.nCity];
 	for(int i=0; i < Constants.nCity; i++)
@@ -38,7 +73,7 @@ public class Individual {
 	    tdistance += distance( cities[i], cities[i-1] );
 
 	//add in distance from last city to first
-	tdistance += distance( cities[Constants.nCity], cities[0] );
+	tdistance += distance( cities[Constants.nCity-1], cities[0] );
 
 	fitness = unique*unique / (300 - tdistance);
     }
@@ -51,9 +86,10 @@ public class Individual {
     @Override
     public String toString() {
 	StringBuilder result = new StringBuilder();
-	for( int i = 0; i < Constants.nCity; i++ )
-	    result.append( cities[i].name + "\n");
+	for( int i = 0; i < Constants.nCity; i++ ) {
+	    result.append( cities[i].name + ( (i+1) % Constants.nCity != 0 ? " => " : "" ) );
+	    if( (i+1) % 5 == 0 ) result.append( "\n");
+	}
 	return result.toString();
     }
-	   
 }
