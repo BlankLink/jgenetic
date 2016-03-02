@@ -7,6 +7,8 @@ import java.util.Random;
 public class Individual {
     public City[] cities;
     private double fitness;
+    public double tdistance;
+    public int tcities;
 
     //random cconstructor
     public Individual( ) {
@@ -66,6 +68,7 @@ public class Individual {
 	for(int i = 0; i < Constants.nCity; i++)
 	    uniqueC.add(cities[i].name);
 	int unique = uniqueC.size();
+	tcities = unique;
 
 	//sum distances of voyage
 	int tdistance = 0;
@@ -74,7 +77,11 @@ public class Individual {
 
 	//add in distance from last city to first
 	tdistance += distance( cities[Constants.nCity-1], cities[0] );
+	this.tdistance = tdistance;
 
+	//generate fitness score
+
+	//TODO:its possible to divide by zero here.
 	fitness = unique*unique / (300 - tdistance);
     }
 

@@ -14,13 +14,23 @@ public class Main {
 
     public static void main(String args[]){
 	setup();
-	Individual i = new Individual();
-	System.out.print( i + "\n\n");
-	Individual j = new Individual( i );
-	System.out.print( j  + "\n\n");
-	Individual k = new Individual();
-	System.out.print( k  + "\n\n");
-	Individual l = new Individual( j, k );
-	System.out.print( l  + "\n\n");
+
+	//individual tests
+	// Individual i = new Individual();
+	// System.out.print( i + "\n\n");
+	// Individual j = new Individual( i );
+	// System.out.print( j  + "\n\n");
+	// Individual k = new Individual();
+	// System.out.print( k  + "\n\n");
+	// Individual l = new Individual( j, k );
+	// System.out.print( l  + "\n\n");
+
+	//generation tests
+	Generation g = new Generation();
+	System.out.println("best gene:\n" + g.bestIndividual + 
+			   "\nfitness: " + g.bestfit +
+			   "\ntotal distance: " + g.bestIndividual.tdistance +
+			   "\ntotal cities: " + g.bestIndividual.tcities);
+
     }
 }
