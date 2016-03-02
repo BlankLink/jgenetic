@@ -83,6 +83,8 @@ public class Individual {
 			  + Math.pow( a.y - b.y , 2 ) );
     }
 
+    public double getFitness(){ return fitness;  }
+
     @Override
     public String toString() {
 	StringBuilder result = new StringBuilder();
