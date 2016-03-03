@@ -19,7 +19,6 @@ public class Generation {
 	for( Individual n : g.individuals )
 	    q.add(n);
 	for( int i = 0; i < Constants.maxpop * Constants.elitism; i++) {
-
 	    individuals.add( q.poll() );
 	}
     }
@@ -77,9 +76,13 @@ public class Generation {
 	Random r = new Random();
 	for(int i = individuals.size(); i < Constants.maxpop; i++) {
 	    double selection = r.nextDouble();
-	    //TODO: check to see which method to use, roulette select individual from pop
+	    if ( selection < Constants.mutation )
+		individuals.add( new Individual( roulette() ) );
+	    else if ( selection < Constants.crossover )
+		individuals.add( new Individual( roulette(), roulette() ) );
+	    else
+		individuals.add( new Individual() );
 	}
-
 	genStats();
     }
 

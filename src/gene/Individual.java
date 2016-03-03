@@ -12,13 +12,14 @@ public class Individual {
 
     //random cconstructor
     public Individual( ) {
+	//TODO: create full 22 city tours from the get go, may enhance performance
 	this.cities = new City[Constants.nCity];
 	for( int i = 0; i < Constants.nCity; i++ )
 	    cities[i] = CityMap.getCityMap().getRandomCity();
 	genFitness();
     }
     
-    //a sexual mutation constructor
+    //mutation (a sexual) constructor
     public Individual( Individual a ) {
 	cities = new City[Constants.nCity];
 	Random rand = new Random();
@@ -34,7 +35,7 @@ public class Individual {
 	genFitness();
     }
 
-    //bi sexual constructor
+    //crossover (bi sexual) constructor
     public Individual( Individual a, Individual b ) {
 	Random rand = new Random();
 	this.cities = new City[Constants.nCity];
@@ -80,9 +81,7 @@ public class Individual {
 	this.tdistance = tdistance;
 
 	//generate fitness score
-
-	//TODO:its possible to divide by zero here.
-	fitness = unique*unique / (300 - tdistance);
+	fitness = unique*unique*unique / tdistance;
     }
 
     private double distance( City a, City b ) {

@@ -25,11 +25,20 @@ public class Main {
 	// System.out.print( l  + "\n\n");
 
 	//generation tests
+	// Generation g = new Generation();
+	// System.out.println(g);
+	// for( int i =0; i < 60; i++) System.out.print("*");
+	// System.out.println();
+	// Generation g2 = new Generation( g );
+	// System.out.println( g2 );
+
 	Generation g = new Generation();
 	System.out.println(g);
 	for( int i =0; i < 60; i++) System.out.print("*");
 	System.out.println();
-	Generation g2 = new Generation( g );
-	System.out.println( g2 );
+	for(int i = 0; i < 100; i++) {
+	    g = new Generation(g);
+	}
+	System.out.println(g);
     }
 }
