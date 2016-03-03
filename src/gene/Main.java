@@ -2,7 +2,6 @@ package gene;
 
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import java.text.DecimalFormat;
 
 public class Main {
 
@@ -15,7 +14,6 @@ public class Main {
 
     public static void main(String args[]){
 	setup();
-
 	//individual tests
 	// Individual i = new Individual();
 	// System.out.print( i + "\n\n");
@@ -28,11 +26,10 @@ public class Main {
 
 	//generation tests
 	Generation g = new Generation();
-	DecimalFormat df = new DecimalFormat("#.##");
-	System.out.println("best gene:\n" + g.bestIndividual + 
-			   "\nfitness: " + df.format(g.bestfit) +
-			   "\ntotal distance: " + df.format(g.bestIndividual.tdistance) +
-			   "\ntotal cities: " + g.bestIndividual.tcities);
-
+	System.out.println(g);
+	for( int i =0; i < 60; i++) System.out.print("*");
+	System.out.println();
+	Generation g2 = new Generation( g );
+	System.out.println( g2 );
     }
 }
