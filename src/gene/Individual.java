@@ -67,11 +67,11 @@ public class Individual {
 	Set<String> uniqueC = new HashSet<String>();
 	for(int i = 0; i < Constants.nCity; i++)
 	    uniqueC.add(cities[i].name);
-	int unique = uniqueC.size();
-	tcities = unique;
+	double unique = uniqueC.size();
+	tcities = (int)unique;
 
 	//sum distances of voyage
-	int tdistance = 0;
+	double tdistance = 0;
 	for(int i = 1; i < Constants.nCity; i++)
 	    tdistance += distance( cities[i], cities[i-1] );
 
