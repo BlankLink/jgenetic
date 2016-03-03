@@ -11,10 +11,10 @@ public class Constants {
     // % individuals to take
     public static double elitism = .25;
 
-    //sum to 1.0
+    // probabilities of selecting method
     public static double mutation = .7;
-    public static double crossover = .2;
-    //end sum to 1.0
+    public static double crossover = mutation + .2;
+    //end
 
     public static Comparator<Individual> indComparator = new Comparator<Individual>() {
 	@Override

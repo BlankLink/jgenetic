@@ -2,6 +2,7 @@ package gene;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 public class Generation {
     public ArrayList<Individual> individuals = new ArrayList<Individual>();
@@ -34,6 +35,32 @@ public class Generation {
 	    }
 	    avgfit+=cFitness;
 	}
+	avgfit/= individuals.size();
+    }
+
+    private Individual roulette() {
+	//Roulette selection method
+	//ALGORITHM: 1. sum the fitnesses
+	//           2. multiply sum by num between 0 - 1
+	//           3. loop through individuals, deducting fitness from product
+	//           4.     until <= 0
+	//           5. select that individual
+
+	double totfit = 0;
+	Individual theone = null;
+	for( Individual n : individuals )
+	    totfit+=n.getFitness();
+	Random r = new Random();
+	totfit *= r.nextDouble();
+	for( Individual n : individuals ) {
+	    totfit -= n.getFitness();
+	    if( totfit <= 0) {
+		theone = n;
+		break;
+	    }
+	    
+	}
+	return theone;
     }
 
     public Generation(){
@@ -47,18 +74,21 @@ public class Generation {
 	//           2.until full, chose random method
 	//           3.    use roulette selection for crossover, mutation
 	getFittest( g );
+	Random r = new Random();
 	for(int i = individuals.size(); i < Constants.maxpop; i++) {
-	    
+	    double selection = r.nextDouble();
+	    //TODO: check to see which method to use, roulette select individual from pop
 	}
 
 	genStats();
     }
+
     @Override
     public String toString() {
 	return "best gene:\n" + bestIndividual + 
 	    "\nfitness: " + Constants.df.format(bestfit) +
 	    "\ntotal distance: " + Constants.df.format(bestIndividual.tdistance) +
 	    "\ntotal cities: " + bestIndividual.tcities +
-	    "\navg fitness: " + avgfit;
+	    "\navg fitness: " + Constants.df.format(avgfit);
     }
 }
