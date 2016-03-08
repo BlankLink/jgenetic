@@ -12,10 +12,17 @@ public class Individual {
 
     //random cconstructor
     public Individual( ) {
-	//TODO: create full 22 city tours from the get go, may enhance performance
+	//selects only full 22 city tours for new members
 	this.cities = new City[Constants.nCity];
-	for( int i = 0; i < Constants.nCity; i++ )
-	    cities[i] = CityMap.getCityMap().getRandomCity();
+	Set<String> uniqueC = new HashSet<String>();
+	for( int i = 0; i < Constants.nCity; i++ ) {
+	    City n;
+	    do {
+		n = CityMap.getCityMap().getRandomCity();
+	    } while ( uniqueC.contains(n.name) );
+	    uniqueC.add(n.name);
+	    this.cities[i] = n;
+	}
 	genFitness();
     }
     
@@ -81,7 +88,8 @@ public class Individual {
 	this.tdistance = tdistance;
 
 	//generate fitness score
-	fitness = unique*unique*unique / tdistance;
+	fitness = unique*unique / ((Constants.nCity - unique) * 100 + tdistance);
+	//	fitness = unique / tdistance / tdistance;
     }
 
     private double distance( City a, City b ) {
